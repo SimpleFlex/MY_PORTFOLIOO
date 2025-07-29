@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll padding for fixed navbar */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Smooth mobile menu transitions */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease;
+}
+.mobile-menu-exit {
+  opacity: 1;
+}
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 300ms ease;
+}
