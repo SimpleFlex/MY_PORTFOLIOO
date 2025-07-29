@@ -1,16 +1,11 @@
 import nodemailer from "nodemailer";
 import { contactEmailTemplate } from "./email.template.js";
-import {
-  EMAIL_PASSWORD,
-  EMAIL_USER,
-  YOUR_PERSONAL_EMAIL,
-} from "../config/env.js";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASSWORD,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -25,8 +20,8 @@ export const sendContactEmail = async (name, email, message) => {
   const html = contactEmailTemplate(name, email, message);
 
   const mailOptions = {
-    from: `"Contact Form" <${EMAIL_USER}>`,
-    to: YOUR_PERSONAL_EMAIL,
+    from: `"Contact Form" <${process.env.EMAIL_USER}>`,
+    to: process.env.YOUR_PERSONAL_EMAIL,
     subject: `New message from ${name}`,
     replyTo: email,
     html,
