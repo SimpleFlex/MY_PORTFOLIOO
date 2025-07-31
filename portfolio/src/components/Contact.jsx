@@ -18,7 +18,7 @@ export default function Contact() {
 
             try {
               const res = await fetch(
-                "http://localhost:3000/api/v1/form/contact",
+                " https://my-portfolioo-chr6.onrender.com/api/v1/form/contact",
                 {
                   method: "POST",
                   headers: {
