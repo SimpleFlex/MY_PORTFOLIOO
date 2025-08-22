@@ -15,10 +15,9 @@ export default function Contact() {
             const name = form.name.value;
             const email = form.email.value;
             const message = form.message.value;
-
             try {
               const res = await fetch(
-                " https://my-portfolioo-chr6.onrender.com/api/v1/form/contact",
+                "https://my-portfolioo-sbom-qpt8932i3-dev-primos-projects.vercel.app/api/v1/form/contact",
                 {
                   method: "POST",
                   headers: {
@@ -28,14 +27,24 @@ export default function Contact() {
                 }
               );
 
+              // Check if the response is OK before parsing JSON
+              if (!res.ok) {
+                const errorText = await res.text();
+                throw new Error(`Server error (${res.status}): ${errorText}`);
+              }
+
               const data = await res.json();
+
               if (data.success) {
                 alert("Message sent successfully!");
                 form.reset();
               } else {
-                alert("Something went wrong: " + data.message);
+                alert(
+                  "Something went wrong: " + (data.message || "Unknown error")
+                );
               }
             } catch (err) {
+              console.error("Fetch error:", err);
               alert("Server error: " + err.message);
             }
           }}
