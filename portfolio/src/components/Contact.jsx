@@ -17,7 +17,7 @@ export default function Contact() {
             const message = form.message.value;
             try {
               const res = await fetch(
-                "https://my-portfolioo-sbom-qpt8932i3-dev-primos-projects.vercel.app/api/v1/form/contact",
+                "https://my-portfolioo-0ac8.onrender.com/api/v1/form/contact",
                 {
                   method: "POST",
                   headers: {
